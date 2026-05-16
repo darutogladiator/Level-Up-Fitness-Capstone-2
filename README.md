@@ -1,4 +1,4 @@
-# Level Up Fitness
+﻿# Level Up Fitness
 
 Level Up Fitness is a full-stack web development project for an AI-powered, gamified fitness tracker. The project began during Capstone 1 as a web-based fitness experience inspired by futuristic RPG progression systems, where users complete daily quests, earn XP, level up, and track workout progress through a game-like interface.
 
