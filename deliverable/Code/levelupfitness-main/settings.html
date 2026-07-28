@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings | Level Up Fitness</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="diffStyle.css">
 </head>
 <body>
     <div class="app">
@@ -28,10 +29,66 @@
                     <h1>Settings</h1>
                 </div>
                 <div class="hunter-card">
+                    <div class="mini-profile-avatar avatar-circle" data-profile-avatar aria-hidden="true">
+                        ⚔
+                    </div>
+                    
                     <span id="rankBadge">E-Rank</span>
                     <strong id="hunterName">Hunter</strong>
                 </div>
             </header>
+
+            <section class="card-grid">
+                <article class="system-panel">
+                    <div class="section-title">
+                        <p class="eyebrow">Preferences</p>
+                        <h2>Display &amp; Units</h2>
+                    </div>
+
+                    <div class="form-grid two">
+                        <label>
+                            Weight Unit
+                            <select id="weightUnit">
+                                <option value="lb">Pounds (lb)</option>
+                                <option value="kg">Kilograms (kg)</option>
+                            </select>
+                        </label>
+                        
+                        <label>
+                            Distance Unit
+                            <select id="distanceUnit">
+                                <option value="mi">Miles (mi)</option>
+                                <option value="km">Kilometers (km)</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="setting-list">
+                        <label class="setting-toggle">
+                            <span>
+                                <strong>Notifications</strong>
+                                <small>Allow workout and quest reminders</small>
+                            </span>
+                            <input id="notificationsEnabled" type="checkbox">
+                        </label>
+
+                        <label class="setting-toggle">
+                            <span>
+                                <strong>Reduced Motion</strong>
+                                <small>Disabled pulsing and animated interace effects</small>
+                            </span>
+                            <input id="reducedMotion" type="checkbox">                        
+                        </label>
+                    </div>
+
+                    <div class="button-row">
+                        <button class="primary-btn" id="saveSettings" type="button">
+                            Save Settings
+                        </button>
+                    </div>
+
+                </article>
+            </section>
 
             <section class="system-panel">
                 <div class="section-title">
@@ -48,5 +105,7 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="settings.js"></script>
+    <script src="navigation.js"></script>
 </body>
 </html>

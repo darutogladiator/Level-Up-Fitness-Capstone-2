@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personalize | Level Up Fitness</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="diffStyle.css">
 </head>
 <body>
     <div class="app">
@@ -28,6 +29,10 @@
                     <h1>Personalize</h1>
                 </div>
                 <div class="hunter-card">
+                   <div class="mini-profile-avatar avatar-circle" data-profile-avatar aria-hidden="true">
+                        ⚔
+                    </div>
+
                     <span id="rankBadge">E-Rank</span>
                     <strong id="hunterName">Hunter</strong>
                 </div>
@@ -38,6 +43,56 @@
                     <p class="eyebrow">Profile</p>
                     <h2>Hunter Setup</h2>
                 </div>
+
+                <div class="avatar-customizer">
+                    <div class="avatar-preview-area">
+                        <button class="profile-avatar avatar-cricle"
+                                id="avatarPreview"
+                                type="button"
+                                aria-label="Cycle through avatar symbols"
+                                title="Click to change symbol">
+                                ⚔
+                        </button>
+
+                    </div>
+
+                    <div class="avatar-controls">
+                        <label>
+                            Avatar Symbol
+
+                            <select id="avatarSymbolInput">
+                                <option value="⚔">Sword</option>
+                                <option value="🔥">Flame</option>
+                                <option value="⚡">Lightning</option>
+                                <option value="🛡">Shield</option>
+                                <option value="💪">Strength</option>
+                                <option value="initials">Use Initials</option>
+                            </select>
+                        </label>
+
+                        <label>Avatar Initials
+                            <input
+                                id="avatarInitialsInput"
+                                type="text"
+                                maxlength="2"
+                                placeholder="HU"
+                            >
+                        </label>
+
+                        <label>
+                            Avatar Shape
+
+                            <select id="avatarShapeInput">
+                                <option value="circle">Circle</option>
+                                <option value="square">Square</option>
+                                <option value="hexagon">Hexagon</option>
+                            </select>
+                        </label>
+
+                    </div>
+
+                </div>
+
                 <div class="form-grid two">
                     <label>
                         Display Name
@@ -52,6 +107,48 @@
                             <option>Stay Consistent</option>
                         </select>
                     </label>
+
+                    <label>
+                        Experience Level
+                        <select id="experienceInput">
+                            <option>Beginner</option>
+                            <option>Intermediate</option>
+                            <option>Advanced</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Perferred Workout
+                        <select id="workoutTypeInput">
+                            <option>Strength</option>
+                            <option>Cardio</option>
+                            <option>Mobility</option>
+                            <option>Mixed</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Available Equipment
+                        <select id="equipmentInput">
+                            <option>None</option>
+                            <option>Dumbell</option>
+                            <option>Home Gym</option>
+                            <option>Full Gym</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Workout Days Per Week
+                        <select id="workoutDaysInput">
+                            <option value="2">2 days</option>
+                            <option value="3">3 days</option>
+                            <option value="4">4 days</option>
+                            <option value="5">5 days</option>
+                            <option value="6">6 days</option>
+                            <option value="7">7 days</option>
+                        </select>
+                    </label>
+
                     <label>
                         Accent
                         <select id="accentInput">
@@ -69,5 +166,7 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="profile.js"></script>
+    <script src="navigation.js"></script>
 </body>
 </html>

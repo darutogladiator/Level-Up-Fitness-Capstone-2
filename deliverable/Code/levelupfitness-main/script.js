@@ -1,11 +1,36 @@
 const STORAGE_KEY = "level-up-fitness-state";
 
 const defaultState = {
+    /*
     profile: {
         name: "Hunter",
         goal: "Build Strength",
         accent: "cyan"
     },
+    */
+    profile: {
+        name: "Hunter",
+        goal: "Build Strength",
+        accent: "cyan",
+        experience: "Beginner",
+        workoutType: "Strength",
+        equipment: "None",
+        workoutDays: "3",
+
+        avatar: {
+            symbol: "⚔",
+            initials: "HU",
+            shape: "circle"
+        }
+    },
+
+    settings: {
+        weightUnit: "1b",
+        distanceUnit: "mi",
+        notification: true,
+        reduceMotion: false
+    },
+
     xp: 0,
     quests: [
         { id: "pushups", title: "100 Pushups", detail: "Strength training", xp: 25, done: false },
@@ -23,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setupLogin();
     setupForms();
     applyAccent();
+    applyStoredSettings();
     renderShared();
     renderPage();
 });
@@ -36,6 +62,7 @@ function loadState() {
             ...structuredClone(defaultState),
             ...saved,
             profile: { ...defaultState.profile, ...(saved.profile || {}) },
+            settings: {...defaultState.settings, ...(saved.settings || {})},
             quests: Array.isArray(saved.quests) && saved.quests.length ? saved.quests : structuredClone(defaultState.quests),
             workouts: Array.isArray(saved.workouts) ? saved.workouts : [],
             meals: Array.isArray(saved.meals) ? saved.meals : []
@@ -92,7 +119,7 @@ function setupForms() {
         });
     }
 
-    const saveProfile = document.getElementById("saveProfile");
+    /*const saveProfile = document.getElementById("saveProfile");
     if (saveProfile) {
         saveProfile.addEventListener("click", () => {
             state.profile.name = document.getElementById("profileNameInput").value.trim() || "Hunter";
@@ -105,7 +132,7 @@ function setupForms() {
         });
     }
 
-    const resetDaily = document.getElementById("resetDaily");
+    /*const resetDaily = document.getElementById("resetDaily");
     if (resetDaily) {
         resetDaily.addEventListener("click", () => {
             state.quests = state.quests.map((quest) => ({ ...quest, done: false }));
@@ -115,7 +142,7 @@ function setupForms() {
         });
     }
 
-    const resetAll = document.getElementById("resetAll");
+    /*const resetAll = document.getElementById("resetAll");
     if (resetAll) {
         resetAll.addEventListener("click", () => {
             state = structuredClone(defaultState);
@@ -125,7 +152,7 @@ function setupForms() {
             renderPage();
             showToast("System Reset", "Local progress has been cleared.");
         });
-    }
+    }*/
 }
 
 function addWorkout() {
@@ -206,12 +233,32 @@ function renderShared() {
     const expBar = document.getElementById("expBar");
     if (expBar) expBar.style.width = `${currentXp}%`;
 
-    const profileNameInput = document.getElementById("profileNameInput");
+    renderSharedAvatar();
+
+    /*const profileNameInput = document.getElementById("profileNameInput");
     if (profileNameInput) profileNameInput.value = state.profile.name;
     const goalInput = document.getElementById("goalInput");
     if (goalInput) goalInput.value = state.profile.goal;
     const accentInput = document.getElementById("accentInput");
-    if (accentInput) accentInput.value = state.profile.accent;
+    if (accentInput) accentInput.value = state.profile.accent;*/
+}
+
+function renderSharedAvatar() {
+    const avatarElements = document.querySelectorAll("[data-profile-avatar]");
+
+    avatarElements.forEach((avatar) => {
+        const avatarData = state.profile.avatar || {
+            symbol: "⚔",
+            initials: "HU",
+            shape: "circle"
+        };
+
+        avatar.textContent = avatarData.symbol || avatarData.initials || "HU";
+
+        avatar.classList.remove("avatar-circle", "avatar-square", "avatar-hexagon");
+
+        avatar.classList.add(`avatar-${avatarData.shape || "circle"}`);
+    });
 }
 
 function renderPage() {
@@ -345,6 +392,10 @@ function renderCalendar() {
 function applyAccent() {
     document.body.classList.remove("violet", "emerald");
     if (state.profile.accent !== "cyan") document.body.classList.add(state.profile.accent);
+}
+
+function applyStoredSettings() {
+    document.body.classList.toggle("reduce-motion", Boolean(state.settings?.reducedMotion));
 }
 
 function getLevel(xp) {
