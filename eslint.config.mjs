@@ -12,9 +12,6 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
-    // Capstone 1 is preserved for history and is not part of the Next.js build.
-    "website/**",
-    "deliverable/**",
   ]),
 ]);
 
